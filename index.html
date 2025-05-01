@@ -7,12 +7,19 @@
             background: black;
             color: white;
             text-align: center;
-            font-family: 'Union Grotesk', monospace;
+            font-family: 'Union Grotesk', sans-serif;
             padding: 20vh 10%;
         }
         h1 {
             font-size: 3rem;
             margin-bottom: 2rem;
+        }
+        .blink {
+            animation: blink 10s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
         .social-links {
             display: flex;
@@ -32,14 +39,29 @@
             color: black;
         }
     </style>
+    <link href="https://fonts.cdnfonts.com/css/union-grotesk" rel="stylesheet">
 </head>
 <body>
     <h1>Ты ждал тут лого?</h1>
-    <p>NO LOGO CLUB — 2025</p>
+    <p class="blink">NO LOGO CLUB — 2025</p>
     
     <div class="social-links">
         <a href="https://t.me/nologoclub">Telegram</a>
         <a href="https://www.avito.ru/user/43e19ff88cffebc3b9e3f1e230fa54da/profile">Avito</a>
     </div>
+
+ <div id="fake-loader" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 100;">
+    <p style="color: white; text-align: center; margin-top: 50vh;">Загрузка лого... 3%</p>
+</div>
+
+<script>
+    document.addEventListener('dblclick', () => {
+        const loader = document.getElementById('fake-loader');
+        loader.style.display = 'block';
+        setTimeout(() => {
+            loader.innerHTML = '<p style="color: white; text-align: center; margin-top: 50vh;">Error 404: NO LOGO</p>';
+        }, 2000);
+    });
+</script>
 </body>
 </html>
