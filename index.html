@@ -25,28 +25,42 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px; /* Увеличил расстояние между кнопками */
             margin-top: 3rem;
         }
         a {
             color: white;
             text-decoration: none;
-            border: 1px solid white;
-            padding: 15px 30px;
+            border: 2px solid white;
+            padding: 30px 60px;
             border-radius: 5px;
-            font-size: 1.2rem;
+            font-size: 2.4rem;
+            transition: all 0.3s;
         }
         a:hover {
             background: white;
             color: black;
+            transform: scale(1.05);
         }
-        /* Стили для увеличенных кнопок */
-        .big-button {
-            font-size: 2.4rem;  /* В 2 раза больше */
-            padding: 30px 60px; /* Больше отступы */
-            border-width: 2px;   /* Толще рамка */
+        /* Анимация дрожания */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .shake {
+            animation: shake 0.3s;
+        }
+        /* Иконки */
+        .icon {
+            margin-right: 15px;
+            font-size: 2.8rem;
+            vertical-align: middle;
         }
     </style>
+    <!-- Подключаем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Подключаем Union Grotesk -->
     <link href="https://fonts.cdnfonts.com/css/union-grotesk" rel="stylesheet">
 </head>
 <body>
@@ -54,8 +68,38 @@
     <p class="blink">NO LOGO CLUB — 2025</p>
     
     <div class="social-links">
-        <a href="https://t.me/nologoclub" class="big-button">Telegram</a>
-        <a href="https://www.avito.ru/user/43e19ff88cffebc3b9e3f1e230fa54da/profile" class="big-button">Avito</a>
+        <a href="https://t.me/nologoclub" id="telegram-btn">
+            <i class="fab fa-telegram icon"></i>Telegram
+        </a>
+        <a href="https://www.avito.ru/user/43e19ff88cffebc3b9e3f1e230fa54da/profile" id="avito-btn">
+            <i class="fas fa-shopping-cart icon"></i>Avito
+        </a>
     </div>
+
+    <!-- Аудио для звука клика -->
+    <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+
+    <script>
+        // Дрожание + звук при клике на кнопки
+        const buttons = document.querySelectorAll('a');
+        const clickSound = document.getElementById('click-sound');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Воспроизводим звук
+                clickSound.currentTime = 0;
+                clickSound.play();
+                
+                // Добавляем дрожание
+                button.classList.add('shake');
+                setTimeout(() => {
+                    button.classList.remove('shake');
+                    window.location.href = button.href;
+                }, 300);
+            });
+        });
+    </script>
 </body>
 </html>
