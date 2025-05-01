@@ -11,12 +11,12 @@
             padding: 20vh 10%;
         }
         h1 {
-            font-size: 6rem;  /* Увеличен в 2 раза (было 3rem) */
+            font-size: 6rem;
             margin-bottom: 2rem;
         }
         .blink {
-            animation: blink 5s infinite;  /* Мигание каждые 5 секунд */
-            font-size: 2rem;  /* Размер текста "NO LOGO CLUB" */
+            animation: blink 5s infinite;
+            font-size: 2rem;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
@@ -32,13 +32,19 @@
             color: white;
             text-decoration: none;
             border: 1px solid white;
-            padding: 15px 30px;  /* Увеличенный размер кнопок */
+            padding: 15px 30px;
             border-radius: 5px;
-            font-size: 1.2rem;  /* Увеличенный шрифт кнопок */
+            font-size: 1.2rem;
         }
         a:hover {
             background: white;
             color: black;
+        }
+        /* Стили для увеличенных кнопок */
+        .big-button {
+            font-size: 2.4rem;  /* В 2 раза больше */
+            padding: 30px 60px; /* Больше отступы */
+            border-width: 2px;   /* Толще рамка */
         }
     </style>
     <link href="https://fonts.cdnfonts.com/css/union-grotesk" rel="stylesheet">
@@ -48,8 +54,8 @@
     <p class="blink">NO LOGO CLUB — 2025</p>
     
     <div class="social-links">
-        <a href="https://t.me/nologoclub">Telegram</a>
-        <a href="https://www.avito.ru/user/43e19ff88cffebc3b9e3f1e230fa54da/profile">Avito</a>
+        <a href="https://t.me/nologoclub" class="big-button">Telegram</a>
+        <a href="https://www.avito.ru/user/43e19ff88cffebc3b9e3f1e230fa54da/profile" class="big-button">Avito</a>
     </div>
 </body>
 </html>
